@@ -1,27 +1,52 @@
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.BorderLayout;
 
 public class GameOfLifeSim
 {
-    public static final int BOARD_WIDTH = 80;
-    public static final int BOARD_LENGTH = 80;  
+
     private JFrame frame;
-    private Grid grid;
+    private JPanel buttonPanel;
+    private JButton startButton;
     private GameWorld world;
     
     public GameOfLifeSim()
     {
         frame = new JFrame("Game Of Life");
-        grid = new Grid();
-        world = new GameWorld(BOARD_WIDTH, BOARD_LENGTH);        
-        frame.setSize(800, 800);
+        startButton = new JButton("Start");
+        buttonMaker();
+        world = new GameWorld();        
+        frame.setSize(800, 820);
+        buttonPanel = new JPanel();
+        buttonPanel.add(startButton);
+        buttonPanel.setSize(50,20);
 
         frame.add(world);
+        frame.add(buttonPanel,BorderLayout.PAGE_END);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+    }
+    
+    private void buttonMaker()
+    {
+        startButton.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent e)
+                {
+                    world.startTimer();
+                }
+
+            }
+        );
     }
     
     
