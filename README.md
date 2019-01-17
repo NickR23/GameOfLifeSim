@@ -3,4 +3,4 @@ An application that mimicks "Conway's Game Of Life" (https://en.wikipedia.org/wi
 
 Todo
   
-  ~Convert this to an applet, so it's browser friendly.
+  ~Convert this to an applet so it's browser friendly.
